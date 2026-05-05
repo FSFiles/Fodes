@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
-import { AppProvider, useApp } from './context/AppContext'
+import { AppProvider, useApp } from '../src/context/AppContext'
 import Header from './components/Header'
 import HomePage      from './pages/HomePage'
 import AuthPage      from './pages/AuthPage'
