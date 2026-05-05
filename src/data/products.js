@@ -11,7 +11,7 @@ export const groceryItems = [
   { id: 110, name: 'Coconut Water',     price: 79,  category: 'grocery', image: 'https://png.pngtree.com/png-clipart/20240826/original/pngtree-refreshing-coconut-water-in-a-green-png-image_15850077.png', desc: 'Natural tender coconut water',      unit: '1 Litre', tag: 'Natural' },
   { id: 111, name: 'Almonds',           price: 299, category: 'grocery', image: 'https://png.pngtree.com/png-vector/20230903/ourmid/pngtree-a-bowl-of-almond-nuts-png-image_9947827.png', desc: 'California premium almonds',      unit: '250g',    tag: 'Healthy' },
   { id: 112, name: 'Amul Butter',       price: 58,  category: 'grocery', image: 'https://www.cpdubai.com/wp-content/uploads/2018/11/500butter.png', desc: 'Pasteurised salted butter',       unit: '100g',    tag: 'Bestseller' },
-]
+  { id: 112, name: 'Coconut Milk',       price: 100,  category: 'grocery', image: 'https://newsite.shopifull.com/wp-content/uploads/2021/04/Ayam-Brand-UHT-Coconut-Milk-200ml.png', desc: 'Fresh.Tasty.Quality.Healthy Refresher',       unit: '1 Litre',    tag: 'Bestseller' },]
 
 export const restaurants = [
   {
