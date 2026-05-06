@@ -23,13 +23,13 @@ export default function ShopPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#FFFBF7] pb-28">
+    <div className="min-h-screen bg-orange-50 pb-28">
       {/* Welcome banner */}
-      <div className="bg-gradient-to-r from-orange-500 to-orange-400 text-white px-4 py-6">
+      <div className="bg-gradient-to-r from-orange-500 to-orange-400 text-orange-500 px-4 py-6">
         <div className="max-w-5xl mx-auto">
-          <p className="text-white/80 text-sm font-medium">Good {getGreeting()},</p>
-          <h2 className="font-bold text-2xl">{user?.name || 'Friend'} 👋</h2>
-          <p className="text-white/70 text-sm mt-1">📍 {user?.city || 'Select city'} · Delivery in 30 min</p>
+          <p className="text-sm font-medium text-orange-500">Good {getGreeting()},</p>
+          <h2 className="font-bold text-2xl text-orange-500">{user?.name || 'Friend'} 👋</h2>
+          <p className=" text-sm mt-1 text-orange-500">📍 {user?.city || 'Select city'} · Delivery in 30 min</p>
         </div>
       </div>
 
