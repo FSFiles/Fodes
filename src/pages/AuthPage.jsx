@@ -100,9 +100,6 @@ export default function AuthPage() {
               <button onClick={sendOTP} disabled={loading} className="btn-primary w-full text-base gap-2" style={{width:'100%'}}>
                 {loading ? '⏳ Sending OTP...' : '📱 Send OTP'}
               </button>
-              <div className="bg-orange-50 border border-orange-100 rounded-xl p-3 text-center">
-                <p className="text-xs text-orange-700 font-medium">🧪 Demo Mode: Enter any 10-digit number. OTP accepts any 6 digits.</p>
-              </div>
             </div>
           )}
 
