@@ -128,6 +128,9 @@ export default function AuthPage() {
               <button onClick={verifyOTP} disabled={loading} className="btn-primary w-full text-base" style={{width:'100%'}}>
                 {loading ? '⏳ Verifying...' : '✅ Verify & Continue'}
               </button>
+              <div className="bg-orange-50 border border-orange-100 rounded-xl p-3 text-center">
+                <p className="text-xs text-orange-700 font-medium">Demo Mode : OTP is 123456</p>
+              </div>
               <div className="text-center">
                 {resendTimer > 0
                   ? <p className="text-gray-400 text-sm">Resend OTP in <span className="font-bold text-primary">{resendTimer}s</span></p>
