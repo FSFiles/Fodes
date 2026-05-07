@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { AppProvider, useApp } from '../src/context/AppContext'
 import Header from './components/Header'
+import Footer from './components/Footer'
 import HomePage      from './pages/HomePage'
 import AuthPage      from './pages/AuthPage'
 import LocationPage  from './pages/LocationPage'
@@ -37,6 +38,7 @@ function AppRoutes() {
         <Route path="/success"            element={<ProtectedRoute><SuccessPage /></ProtectedRoute>} />
         <Route path="*"                   element={<Navigate to="/" replace />} />
       </Routes>
+      <Footer />
     </>
   )
 }

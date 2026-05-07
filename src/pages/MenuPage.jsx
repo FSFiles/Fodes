@@ -25,7 +25,7 @@ export default function MenuPage() {
   const totalNonVeg = restaurant.menu.filter(c => c.type === 'non-veg').reduce((s,c) => s + c.items.length, 0)
 
   return (
-    <div className="min-h-screen bg-[#FFFBF7] pb-32">
+    <div className="min-h-screen bg-[#FFFBF7] pb-32 page-background">
       {/* Cover */}
       <div className="relative h-56 overflow-hidden">
         <img src={restaurant.cover} alt={restaurant.name} className="w-full h-full object-cover" />

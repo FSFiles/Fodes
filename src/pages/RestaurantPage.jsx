@@ -15,7 +15,7 @@ export default function RestaurantPage() {
   })
 
   return (
-    <div className="min-h-screen bg-[#FFFBF7] pb-10">
+    <div className="min-h-screen bg-[#FFFBF7] pb-10 page-background">
       {/* Header */}
       <div className="bg-gradient-to-r from-orange-500 to-orange-400 text-white px-4 py-6">
         <div className="max-w-5xl mx-auto">

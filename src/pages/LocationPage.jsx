@@ -30,7 +30,7 @@ export default function LocationPage() {
   }
 
   return (
-    <div className="min-h-screen bg-warm px-4 py-10">
+    <div className="min-h-screen bg-warm px-4 py-10 page-background">
       <div className="max-w-lg mx-auto">
         {/* Header */}
         <div className="text-center mb-8">

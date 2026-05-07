@@ -12,7 +12,7 @@ export default function HomePage() {
   }, [user])
 
   return (
-    <div className="min-h-screen bg-warm">
+    <div className="min-h-screen bg-warm page-background">
       {/* Hero */}
       <section className="relative overflow-hidden bg-gradient-to-br from-orange-50 via-white to-teal/5 py-20 px-4">
         <div className="max-w-4xl mx-auto text-center">

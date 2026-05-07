@@ -34,7 +34,7 @@ export default function PaymentPage() {
   }
 
   return (
-    <div className="min-h-screen bg-warm pb-10">
+    <div className="min-h-screen bg-warm pb-10 page-background">
       <div className="max-w-lg mx-auto px-4 pt-6">
         <h1 className="font-display text-3xl font-bold text-gray-900 mb-2">Payment 💳</h1>
         <p className="text-gray-500 mb-6">Choose your preferred payment method</p>

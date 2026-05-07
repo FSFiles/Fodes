@@ -66,7 +66,7 @@ export default function AuthPage() {
   }
 
   return (
-    <div className="min-h-screen bg-warm flex items-center justify-center px-4 py-12">
+    <div className="min-h-screen bg-warm flex items-center justify-center px-4 py-12 page-background">
       <div className="w-full max-w-md">
         <div className="card p-8 shadow-xl">
           <div className="text-center mb-8">

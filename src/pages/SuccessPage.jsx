@@ -15,7 +15,7 @@ export default function SuccessPage() {
   }, [])
 
   return (
-    <div className="min-h-screen bg-warm flex flex-col items-center justify-center px-4 relative overflow-hidden">
+    <div className="min-h-screen bg-warm flex flex-col items-center justify-center px-4 relative overflow-hidden page-background">
       {/* Flying tick overlay */}
       {(phase === 'show' || phase === 'flying') && (
         <div

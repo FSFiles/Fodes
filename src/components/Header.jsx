@@ -9,7 +9,7 @@ export default function Header() {
   const hideCart = ['/', '/auth', '/location', '/name'].includes(location.pathname)
 
   return (
-    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100 shadow-sm">
+    <header className="sticky top-0 z-50 bg-orange-400 backdrop-blur-sm border-b border-gray-100 shadow-sm">
       <div className="max-w-5xl mx-auto px-4 h-16 flex items-center justify-between">
         {/* Logo */}
         <Link to={user ? '/shop' : '/'} className="flex items-center gap-2">

@@ -19,7 +19,7 @@ export default function CartPage() {
   )
 
   return (
-    <div className="min-h-screen bg-warm pb-10">
+    <div className="min-h-screen bg-warm pb-10 page-background">
       <div className="max-w-2xl mx-auto px-4 pt-6">
         <div className="flex items-center justify-between mb-6">
           <h1 className="font-display text-3xl font-bold text-gray-900">Your Cart 🛒</h1>

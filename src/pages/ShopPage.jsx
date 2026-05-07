@@ -23,7 +23,7 @@ export default function ShopPage() {
   }
 
   return (
-    <div className="min-h-screen bg-orange-50 pb-28">
+    <div className="min-h-screen bg-orange-50 pb-28 page-background">
       {/* Welcome banner */}
       <div className="bg-gradient-to-r from-orange-500 to-orange-400 text-orange-500 px-4 py-6">
         <div className="max-w-5xl mx-auto">

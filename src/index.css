@@ -1,2 +1,7 @@
 /* Tailwind loaded via CDN in index.html */
 @import "tailwindcss";
+
+/* Background pattern for all pages */
+.page-background {
+  background-color: white;
+}

@@ -15,7 +15,7 @@ export default function NamePage() {
   }
 
   return (
-    <div className="min-h-screen bg-warm flex items-center justify-center px-4">
+    <div className="min-h-screen bg-warm flex items-center justify-center px-4 page-background">
       <div className="w-full max-w-md">
         <div className="card p-8 shadow-xl text-center">
           <div className="text-7xl mb-6">👋</div>
