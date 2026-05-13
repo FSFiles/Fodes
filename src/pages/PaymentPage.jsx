@@ -10,7 +10,7 @@ const PAYMENT_METHODS = [
 ]
 
 export default function PaymentPage() {
-  const { cartTotal, clearCart, user } = useApp()
+  const { cartTotal, clearCart, user, placeOrder } = useApp()
   const navigate = useNavigate()
   const [method, setMethod] = useState('upi')
   const [loading, setLoading] = useState(false)
@@ -28,6 +28,9 @@ export default function PaymentPage() {
     if (method === 'netbanking' && !bank) { alert('Please select a bank'); return }
     setLoading(true)
     setTimeout(() => {
+      const orderId = `FB${Date.now().toString().slice(-6)}`
+      const eta = Math.floor(Math.random() * 15) + 25
+      placeOrder(orderId, eta)
       clearCart()
       navigate('/success')
     }, 2000)

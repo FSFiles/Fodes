@@ -1,14 +1,22 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useApp } from '../context/AppContext'
+import { ORDER_STAGES } from '../context/AppContext'
 import ProductCard from '../components/ProductCard'
 import { groceryItems } from '../data/products'
 import { Link, useNavigate } from 'react-router-dom'
 
 export default function ShopPage() {
-  const { user, cartCount, cartTotal } = useApp()
+  const { user, cartCount, cartTotal, activeOrder, advanceOrderStage, clearOrder } = useApp()
   const [section, setSection] = useState('food')
   const [grocerySearch, setGrocerySearch] = useState('')
   const navigate = useNavigate()
+
+  // Auto-advance order stage every 8 seconds (demo simulation)
+  useEffect(() => {
+    if (!activeOrder || activeOrder.stage >= ORDER_STAGES.length - 1) return
+    const timer = setTimeout(() => advanceOrderStage(), 8000)
+    return () => clearTimeout(timer)
+  }, [activeOrder])
 
   const filteredGrocery = groceryItems.filter(i =>
     i.name.toLowerCase().includes(grocerySearch.toLowerCase()) ||
@@ -22,8 +30,104 @@ export default function ShopPage() {
     return 'evening'
   }
 
+  // Stage colour helpers
+  const stageColors = {
+    gray:   { bg: 'bg-gray-100',   text: 'text-gray-600',   bar: 'bg-gray-400',    ring: 'ring-gray-300'   },
+    blue:   { bg: 'bg-blue-100',   text: 'text-blue-700',   bar: 'bg-blue-500',    ring: 'ring-blue-300'   },
+    orange: { bg: 'bg-orange-100', text: 'text-orange-700', bar: 'bg-orange-500',  ring: 'ring-orange-300' },
+    green:  { bg: 'bg-green-100',  text: 'text-green-700',  bar: 'bg-green-500',   ring: 'ring-green-300'  },
+  }
+
   return (
     <div className="min-h-screen bg-orange-50 pb-28 page-background">
+
+      {/* ── Live Order Tracker Banner ── */}
+      {activeOrder && (() => {
+        const stage = ORDER_STAGES[activeOrder.stage]
+        const col   = stageColors[stage.color]
+        const isDelivered = activeOrder.stage === ORDER_STAGES.length - 1
+        return (
+          <div className={`${col.bg} border-b-2 ${col.ring.replace('ring','border')} px-4 py-4 animate-fadeInUp`}>
+            <div className="max-w-5xl mx-auto">
+              {/* Header row */}
+              <div className="flex items-center justify-between mb-3">
+                <div className="flex items-center gap-2">
+                  <span className="text-2xl">{stage.icon}</span>
+                  <div>
+                    <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide">Order #{activeOrder.orderId}</p>
+                    <p className={`font-bold text-base ${col.text}`}>{stage.label}</p>
+                  </div>
+                  {!isDelivered && (
+                    <span className={`ml-2 text-xs font-bold px-2 py-0.5 rounded-full ${col.bg} ${col.text} border ${col.ring.replace('ring','border')} animate-pulse`}>
+                      🟢 Live
+                    </span>
+                  )}
+                </div>
+                <button
+                  onClick={clearOrder}
+                  className="text-gray-400 hover:text-gray-600 text-lg font-bold leading-none"
+                  title="Dismiss"
+                >✕</button>
+              </div>
+
+              {/* Stage progress steps */}
+              <div className="flex items-center gap-0">
+                {ORDER_STAGES.map((s, i) => {
+                  const done    = i < activeOrder.stage
+                  const current = i === activeOrder.stage
+                  const sc      = stageColors[s.color]
+                  return (
+                    <div key={i} className="flex items-center flex-1 last:flex-none">
+                      {/* Circle */}
+                      <div className={`flex-shrink-0 w-9 h-9 rounded-full flex items-center justify-center text-base font-bold border-2 transition-all duration-500
+                        ${ done    ? 'bg-green-500 border-green-500 text-white'
+                          : current ? `${sc.bg} border-current ${sc.text} scale-110 shadow-md`
+                          : 'bg-white border-gray-200 text-gray-300' }`}
+                      >
+                        {done ? '✓' : s.icon}
+                      </div>
+                      {/* Connector bar */}
+                      {i < ORDER_STAGES.length - 1 && (
+                        <div className="flex-1 h-1.5 mx-1 rounded-full bg-gray-200 overflow-hidden">
+                          <div
+                            className={`h-full rounded-full transition-all duration-700 ${
+                              done ? 'bg-green-500 w-full'
+                              : current ? `${sc.bar} w-1/2`
+                              : 'w-0'
+                            }`}
+                          />
+                        </div>
+                      )}
+                    </div>
+                  )
+                })}
+              </div>
+
+              {/* Step labels row */}
+              <div className="flex mt-1.5">
+                {ORDER_STAGES.map((s, i) => (
+                  <div key={i} className="flex-1 last:flex-none">
+                    <p className={`text-xs font-semibold text-center leading-tight ${
+                      i <= activeOrder.stage ? col.text : 'text-gray-300'
+                    }`} style={{ fontSize: '0.6rem' }}>
+                      {s.label}
+                    </p>
+                  </div>
+                ))}
+              </div>
+
+              {/* ETA or Delivered message */}
+              <p className={`text-xs mt-2 font-medium text-center ${col.text}`}>
+                {isDelivered
+                  ? '🎉 Your order has been delivered! Enjoy your meal.'
+                  : `🕐 Estimated delivery: ${activeOrder.eta}–${activeOrder.eta + 5} mins`
+                }
+              </p>
+            </div>
+          </div>
+        )
+      })()}
+
       {/* Welcome banner */}
       <div className="bg-gradient-to-r from-orange-500 to-orange-400 text-orange-500 px-4 py-6">
         <div className="max-w-5xl mx-auto">

@@ -2,6 +2,14 @@ import { createContext, useContext, useState, useEffect } from 'react'
 
 const AppContext = createContext()
 
+// Order stages
+export const ORDER_STAGES = [
+  { label: 'Yet to Start',                    icon: '🕐', color: 'gray'   },
+  { label: 'Delivery Partner Arrived to Pickup', icon: '🏪', color: 'blue'   },
+  { label: 'On the Way',                      icon: '🛵', color: 'orange' },
+  { label: 'Delivered',                       icon: '✅', color: 'green'  },
+]
+
 export function AppProvider({ children }) {
   const [user, setUser] = useState(() => {
     const saved = localStorage.getItem('freshbite_user')
@@ -10,6 +18,10 @@ export function AppProvider({ children }) {
   const [cart, setCart] = useState(() => {
     const saved = localStorage.getItem('freshbite_cart')
     return saved ? JSON.parse(saved) : []
+  })
+  const [activeOrder, setActiveOrder] = useState(() => {
+    const saved = localStorage.getItem('freshbite_order')
+    return saved ? JSON.parse(saved) : null
   })
 
   useEffect(() => {
@@ -20,6 +32,24 @@ export function AppProvider({ children }) {
   useEffect(() => {
     localStorage.setItem('freshbite_cart', JSON.stringify(cart))
   }, [cart])
+
+  useEffect(() => {
+    if (activeOrder) localStorage.setItem('freshbite_order', JSON.stringify(activeOrder))
+    else localStorage.removeItem('freshbite_order')
+  }, [activeOrder])
+
+  function placeOrder(orderId, eta) {
+    setActiveOrder({ orderId, eta, stage: 0, placedAt: Date.now() })
+  }
+
+  function advanceOrderStage() {
+    setActiveOrder(prev => prev && prev.stage < ORDER_STAGES.length - 1
+      ? { ...prev, stage: prev.stage + 1 }
+      : prev
+    )
+  }
+
+  function clearOrder() { setActiveOrder(null); localStorage.removeItem('freshbite_order') }
 
   const cartCount = cart.reduce((sum, i) => sum + i.qty, 0)
   const cartTotal = cart.reduce((sum, i) => sum + i.price * i.qty, 0)
@@ -53,7 +83,7 @@ export function AppProvider({ children }) {
   }
 
   return (
-    <AppContext.Provider value={{ user, setUser, cart, cartCount, cartTotal, addToCart, removeFromCart, clearCart, getQty, logout }}>
+    <AppContext.Provider value={{ user, setUser, cart, cartCount, cartTotal, addToCart, removeFromCart, clearCart, getQty, logout, activeOrder, placeOrder, advanceOrderStage, clearOrder }}>
       {children}
     </AppContext.Provider>
   )
