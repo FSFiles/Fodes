@@ -7,9 +7,7 @@ export default function HomePage() {
   const { user } = useApp()
   const navigate = useNavigate()
 
-  useEffect(() => {
-    if (user) navigate('/shop')
-  }, [user])
+  // Removed: useEffect(() => { if (user) navigate('/shop') }, [user])
 
   return (
     <div className="min-h-screen bg-warm page-background">
@@ -27,10 +25,10 @@ export default function HomePage() {
             Order from your favourite restaurants and get fresh groceries delivered to your doorstep in minutes.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fadeInUp">
-            <Link to="/auth" className="btn-primary text-lg py-4 px-8 inline-flex items-center gap-2">
+            <Link to={user ? "/restaurants" : "/auth"} className="btn-primary text-lg py-4 px-8 inline-flex items-center gap-2">
               🍽️ Order Food Now
             </Link>
-            <Link to="/auth" className="btn-outline text-lg py-4 px-8 inline-flex items-center gap-2">
+            <Link to={user ? "/shop" : "/auth"} className="btn-outline text-lg py-4 px-8 inline-flex items-center gap-2">
               🛒 Shop Groceries
             </Link>
           </div>

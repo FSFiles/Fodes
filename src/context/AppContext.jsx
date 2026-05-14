@@ -4,10 +4,10 @@ const AppContext = createContext()
 
 // Order stages
 export const ORDER_STAGES = [
-  { label: 'Yet to Start',                    icon: '🕐', color: 'gray'   },
-  { label: 'Delivery Partner Arrived to Pickup', icon: '🏪', color: 'blue'   },
-  { label: 'On the Way',                      icon: '🛵', color: 'orange' },
-  { label: 'Delivered',                       icon: '✅', color: 'green'  },
+  { label: 'Yet to Start', image: 'https://static.vecteezy.com/system/resources/previews/019/879/196/non_2x/passage-of-time-icon-on-transparent-background-free-png.png', color: 'gray' },
+  { label: 'Delivery Partner Arrived to Pickup', image: 'https://png.pngtree.com/png-clipart/20241007/original/pngtree-logo-of-delivery-boy-png-image_16223992.png', color: 'blue' },
+  { label: 'On the Way', image: 'https://cdn-icons-png.freepik.com/512/9307/9307010.png', color: 'orange' },
+  { label: 'Delivered', image: 'https://png.pngtree.com/png-vector/20220509/ourmid/pngtree-delivered-grunge-delivered-ink-vector-png-image_17804250.png', color: 'green' },
 ]
 
 export function AppProvider({ children }) {

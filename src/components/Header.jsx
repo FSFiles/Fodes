@@ -30,7 +30,7 @@ export default function Header() {
         <div className="flex items-center gap-3">
           {!hideCart && (
             <Link to="/cart" className="relative p-2 hover:bg-gray-50 rounded-xl transition-colors">
-              <span className="text-2xl">🛒</span>
+              <span className="text-2xl"><img src="https://png.pngtree.com/png-vector/20250506/ourmid/pngtree-3d-shopping-cart-icon-with-transparent-background-png-image_16182065.png" alt="Cart" className="w-11 h-11" /></span>
               {cartCount > 0 && (
                 <span className="absolute -top-1 -right-1 bg-primary text-white text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center animate-bounceIn">
                   {cartCount > 9 ? '9+' : cartCount}
@@ -56,13 +56,13 @@ export default function Header() {
                 </div>
                 <div className="p-2">
                   <button onClick={() => navigate('/shop')} className="w-full text-left px-3 py-2 text-sm hover:bg-gray-50 rounded-xl text-gray-700 font-medium flex items-center gap-2">
-                    <span>🏠</span> Home
+                    <span><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Home_icon_grey.png?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original" alt="Home" className="w-6 h-6" /></span> Home
                   </button>
                   <button onClick={() => navigate('/cart')} className="w-full text-left px-3 py-2 text-sm hover:bg-gray-50 rounded-xl text-gray-700 font-medium flex items-center gap-2">
-                    <span>🛒</span> My Cart
+                    <span><img src="https://png.pngtree.com/png-vector/20250506/ourmid/pngtree-3d-shopping-cart-icon-with-transparent-background-png-image_16182065.png" alt="Cart" className="w-8 h-8" /></span> My Cart
                   </button>
                   <button onClick={logout} className="w-full text-left px-3 py-2 text-sm hover:bg-red-50 rounded-xl text-red-500 font-medium flex items-center gap-2">
-                    <span>🚪</span> Logout
+                    <span><img src="https://png.pngtree.com/png-vector/20190721/ourmid/pngtree-logout--icon-in-trendy-style-isolated-background-png-image_1565681.jpg" alt="Logout" className="w-8 h-8" /></span> Logout
                   </button>
                 </div>
               </div>

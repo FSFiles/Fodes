@@ -3,10 +3,10 @@ import { useNavigate } from 'react-router-dom'
 import { useApp } from '../context/AppContext'
 
 const PAYMENT_METHODS = [
-  { id: 'cod',        label: 'Cash on Delivery', icon: '💵', desc: 'Pay when your order arrives', color: 'green' },
-  { id: 'upi',        label: 'UPI',              icon: '📱', desc: 'PhonePe, GPay, Paytm, BHIM', color: 'primary' },
-  { id: 'card',       label: 'Credit / Debit Card', icon: '💳', desc: 'Visa, Mastercard, RuPay',  color: 'blue' },
-  { id: 'netbanking', label: 'Net Banking',       icon: '🏦', desc: 'All major Indian banks',     color: 'purple' },
+  { id: 'cod',        label: 'Cash on Delivery', image:"https://png.pngtree.com/png-vector/20240517/ourmid/pngtree-cartoon-stack-of-dollar-cash-bundle-png-image_12484830.png", desc: 'Pay when your order arrives', color: 'green' },
+  { id: 'upi',        label: 'UPI',              image:"https://cdn.iconscout.com/icon/free/png-256/free-upi-logo-icon-svg-download-png-1747946.png", desc: 'PhonePe, GPay, Paytm, BHIM', color: 'primary' },
+  { id: 'card',       label: 'Credit / Debit Card', image:"https://png.pngtree.com/png-clipart/20250529/original/pngtree-flat-style-credit-card-vector-png-image_21090185.png", desc: 'Visa, Mastercard, RuPay',  color: 'blue' },
+  { id: 'netbanking', label: 'Net Banking',       image:"https://png.pngtree.com/png-clipart/20211116/original/pngtree-flat-style-illustration-of-online-banking-and-internet-payment-transactions-png-image_6937272.png", desc: 'All major Indian banks',     color: 'purple' },
 ]
 
 export default function PaymentPage() {
@@ -63,7 +63,7 @@ export default function PaymentPage() {
                   : 'border-gray-100 bg-white hover:border-gray-200'
               }`}
             >
-              <span className="text-2xl">{m.icon}</span>
+              <span className="text-2xl">{m.image && <img src={m.image} alt={m.label} className="w-6 h-6" />}</span>
               <div className="flex-1">
                 <p className="font-bold text-gray-900">{m.label}</p>
                 <p className="text-xs text-gray-400">{m.desc}</p>
@@ -79,21 +79,56 @@ export default function PaymentPage() {
 
         {/* Dynamic form */}
         {method === 'upi' && (
-          <div className="card p-5 mb-6 animate-fadeInUp">
-            <label className="block text-sm font-bold text-gray-700 mb-2">Enter UPI ID</label>
-            <input
-              type="text" value={upiId} onChange={e => setUpiId(e.target.value)}
-              placeholder="yourname@upi"
-              className="w-full border-2 border-gray-200 rounded-xl px-4 py-3 font-semibold focus:outline-none focus:border-primary transition-all"
-            />
-            <div className="flex gap-2 mt-3">
-              {['GPay','PhonePe','Paytm','BHIM'].map(app => (
-                <span key={app} className="bg-gray-100 text-gray-600 text-xs px-3 py-1.5 rounded-full font-medium">{app}</span>
-              ))}
-            </div>
-          </div>
-        )}
+  <div className="card p-5 mb-6 animate-fadeInUp">
+    <label className="block text-sm font-bold text-gray-700 mb-2">
+      Enter UPI ID
+    </label>
 
+    <input
+      type="text"
+      value={upiId}
+      onChange={e => setUpiId(e.target.value)}
+      placeholder="yourname@upi"
+      className="w-full border-2 border-gray-200 rounded-xl px-4 py-3 font-semibold focus:outline-none focus:border-primary transition-all"
+    />
+
+    <div className="flex gap-3 mt-4">
+      {[
+        {
+          name: "GPay",
+          image:
+            "https://static.vecteezy.com/system/resources/previews/046/861/640/non_2x/google-pay-logo-transparent-background-free-png.png",
+        },
+        {
+          name: "PhonePe",
+          image:
+            "https://download.logo.wine/logo/PhonePe/PhonePe-Logo.wine.png",
+        },
+        {
+          name: "Paytm",
+          image:
+            "https://download.logo.wine/logo/Paytm/Paytm-Logo.wine.png",
+        },
+        {
+          name: "BHIM",
+          image:
+            "https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/bhim-app-icon.png",
+        },
+      ].map(app => (
+        <div
+          key={app.name}
+          className="bg-gray-100 rounded-xl px-3 py-2 flex items-center justify-center hover:scale-105 transition-all"
+        >
+          <img
+            src={app.image}
+            alt={app.name}
+            className="h-6 w-auto object-contain"
+          />
+        </div>
+      ))}
+    </div>
+  </div>
+)}
         {method === 'card' && (
           <div className="card p-5 mb-6 space-y-4 animate-fadeInUp">
             <div>

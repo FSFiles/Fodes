@@ -32,10 +32,10 @@ export default function Footer() {
           <div>
             <h3 className="font-bold text-white mb-4">Support</h3>
             <ul className="space-y-2 text-sm">
-              <li><a href="#" className="text-gray-400 hover:text-primary transition-colors">Help Center</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-primary transition-colors">Contact Us</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-primary transition-colors">FAQs</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-primary transition-colors">Report Issue</a></li>
+              <li><a href="#" onClick={e => e.preventDefault()} className="text-gray-400 hover:text-primary transition-colors">Help Center</a></li>
+              <li><a href="#" onClick={e => e.preventDefault()} className="text-gray-400 hover:text-primary transition-colors">Contact Us</a></li>
+              <li><a href="#" onClick={e => e.preventDefault()} className="text-gray-400 hover:text-primary transition-colors">FAQs</a></li>
+              <li><a href="#" onClick={e => e.preventDefault()} className="text-gray-400 hover:text-primary transition-colors">Report Issue</a></li>
             </ul>
           </div>
 
@@ -43,10 +43,10 @@ export default function Footer() {
           <div>
             <h3 className="font-bold text-white mb-4">Legal</h3>
             <ul className="space-y-2 text-sm">
-              <li><a href="#" className="text-gray-400 hover:text-primary transition-colors">Privacy Policy</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-primary transition-colors">Terms of Service</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-primary transition-colors">Cookie Policy</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-primary transition-colors">Refund Policy</a></li>
+              <li><a href="#" onClick={e => e.preventDefault()} className="text-gray-400 hover:text-primary transition-colors">Privacy Policy</a></li>
+              <li><a href="#" onClick={e => e.preventDefault()} className="text-gray-400 hover:text-primary transition-colors">Terms of Service</a></li>
+              <li><a href="#" onClick={e => e.preventDefault()} className="text-gray-400 hover:text-primary transition-colors">Cookie Policy</a></li>
+              <li><a href="#" onClick={e => e.preventDefault()} className="text-gray-400 hover:text-primary transition-colors">Refund Policy</a></li>
             </ul>
           </div>
         </div>
@@ -56,10 +56,10 @@ export default function Footer() {
           {/* Social & Contact */}
           <div className="flex flex-col md:flex-row justify-between items-center gap-6 mb-6">
             <div className="flex gap-4">
-              <a href="#" className="w-10 h-10 bg-gray-800 hover:bg-primary rounded-lg flex items-center justify-center transition-colors text-sm">f</a>
-              <a href="#" className="w-10 h-10 bg-gray-800 hover:bg-primary rounded-lg flex items-center justify-center transition-colors text-sm">𝕏</a>
-              <a href="#" className="w-10 h-10 bg-gray-800 hover:bg-primary rounded-lg flex items-center justify-center transition-colors text-sm">in</a>
-              <a href="#" className="w-10 h-10 bg-gray-800 hover:bg-primary rounded-lg flex items-center justify-center transition-colors text-sm">📷</a>
+              <a href="#" onClick={e => e.preventDefault()} className="w-10 h-10 bg-gray-800 hover:bg-primary rounded-lg flex items-center justify-center transition-colors text-sm">f</a>
+              <a href="#" onClick={e => e.preventDefault()} className="w-10 h-10 bg-gray-800 hover:bg-primary rounded-lg flex items-center justify-center transition-colors text-sm">𝕏</a>
+              <a href="#" onClick={e => e.preventDefault()} className="w-10 h-10 bg-gray-800 hover:bg-primary rounded-lg flex items-center justify-center transition-colors text-sm">in</a>
+              <a href="#" onClick={e => e.preventDefault()} className="w-10 h-10 bg-gray-800 hover:bg-primary rounded-lg flex items-center justify-center transition-colors text-sm">📷</a>
             </div>
             <div className="text-sm text-gray-400 text-center md:text-right">
               <p>📧 support@freshbite.com</p>

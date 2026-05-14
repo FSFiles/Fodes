@@ -42,7 +42,7 @@ export default function NamePage() {
           <div className="mt-6">
             <p className="text-xs text-gray-400 mb-3">Quick picks</p>
             <div className="flex flex-wrap gap-2 justify-center">
-              {['Arjun', 'Priya', 'Rahul', 'Sneha', 'Amit'].map(n => (
+              {['Leon', 'Pranesh', 'Diana', 'Baskaran', 'Jesy'].map(n => (
                 <button key={n} onClick={() => setName(n)} className="text-xs bg-gray-100 hover:bg-primary/10 hover:text-primary text-gray-600 px-3 py-1.5 rounded-full font-medium transition-colors">
                   {n}
                 </button>

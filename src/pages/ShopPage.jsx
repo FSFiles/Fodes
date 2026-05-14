@@ -39,7 +39,7 @@ export default function ShopPage() {
   }
 
   return (
-    <div className="min-h-screen bg-orange-50 pb-28 page-background">
+    <div className="min-h-screen bg-orange-100 pb-28 ">
 
       {/* ── Live Order Tracker Banner ── */}
       {activeOrder && (() => {
@@ -52,7 +52,10 @@ export default function ShopPage() {
               {/* Header row */}
               <div className="flex items-center justify-between mb-3">
                 <div className="flex items-center gap-2">
-                  <span className="text-2xl">{stage.icon}</span>
+                  {stage.image
+                    ? <img src={stage.image} alt={stage.label} className="w-8 h-8 object-contain" />
+                    : <span className="text-2xl">{stage.icon}</span>
+                  }
                   <div>
                     <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide">Order #{activeOrder.orderId}</p>
                     <p className={`font-bold text-base ${col.text}`}>{stage.label}</p>
@@ -84,7 +87,12 @@ export default function ShopPage() {
                           : current ? `${sc.bg} border-current ${sc.text} scale-110 shadow-md`
                           : 'bg-white border-gray-200 text-gray-300' }`}
                       >
-                        {done ? '✓' : s.icon}
+                        {done
+                          ? '✓'
+                          : s.image
+                            ? <img src={s.image} alt={s.label} className="w-5 h-5 object-contain" />
+                            : s.icon
+                        }
                       </div>
                       {/* Connector bar */}
                       {i < ORDER_STAGES.length - 1 && (
@@ -129,11 +137,11 @@ export default function ShopPage() {
       })()}
 
       {/* Welcome banner */}
-      <div className="bg-gradient-to-r from-orange-500 to-orange-400 text-orange-500 px-4 py-6">
-        <div className="max-w-5xl mx-auto">
-          <p className="text-sm font-medium text-orange-500">Good {getGreeting()},</p>
-          <h2 className="font-bold text-2xl text-orange-500">{user?.name || 'Friend'} 👋</h2>
-          <p className=" text-sm mt-1 text-orange-500">📍 {user?.city || 'Select city'} · Delivery in 30 min</p>
+      <div className="bg-orange-70 from-orange-500 to-orange-400 text-orange-500 px-4 py-6">
+        <div className="max-w-5xl mx-auto bg-orange-400 p-10 text-white rounded-3xl display animate-fadeInUp">
+          <p className="text-sm font-medium ">Good {getGreeting()},</p>
+          <h2 className="font-bold text-2xl ">{user?.name || 'Friend'} 👋</h2>
+          <p className=" text-sm mt-1 ">📍 {user?.city || 'Select city'} · Delivery in 30 min</p>
         </div>
       </div>
 
@@ -158,13 +166,13 @@ export default function ShopPage() {
         {section === 'food' && (
           <div>
             {/* Hero banner */}
-            <div className="rounded-3xl bg-gradient-to-r from-orange-100 to-yellow-50 border border-orange-100 p-6 mb-6 flex items-center justify-between">
+            <div className="rounded-3xl bg-orange-400 from-orange-100 to-yellow-50 border border-orange-100 p-6 mb-6 flex items-center justify-between display animate-fadeInUp">
               <div>
-                <p className="text-orange-500 font-bold text-sm">Today's Special 🔥</p>
-                <h3 className="font-bold text-2xl text-gray-900 mt-1">Top Restaurants<br/>Near You</h3>
-                <p className="text-gray-500 text-sm mt-1">Free delivery on first order</p>
+                <p className="text-gray-900 font-bold text-sm">Today's Special 🔥</p>
+                <h3 className="font-bold text-2xl text-gray-800 mt-1">Top Restaurants<br/>Near You</h3>
+                <p className="text-gray-800 text-sm mt-1">Free delivery on first order</p>
               </div>
-              <span className="text-7xl">🍛</span>
+              <span className="text-7xl w-30 h-30"><img src="https://png.pngtree.com/png-vector/20240731/ourmid/pngtree-large-bowl-of-chicken-biryani-garnished-with-fresh-herbs-png-image_13317797.png" alt="" /></span>
             </div>
 
             {/* Quick category chips */}
@@ -194,13 +202,13 @@ export default function ShopPage() {
         {section === 'grocery' && (
           <div>
             {/* Hero */}
-            <div className="rounded-3xl bg-gradient-to-r from-teal-50 to-green-50 border border-teal-100 p-6 mb-6 flex items-center justify-between">
+            <div className="rounded-3xl bg-green-500 from-teal-50 to-green-50 border border-teal-100 p-6 mb-6 flex items-center justify-between display animate-fadeInUp">
               <div>
-                <p className="text-teal-600 font-bold text-sm">Farm Fresh 🌿</p>
-                <h3 className="font-bold text-2xl text-gray-900 mt-1">Groceries<br/>Delivered Fast</h3>
-                <p className="text-gray-500 text-sm mt-1">100% fresh. No compromises.</p>
+                <p className="text-gray-800 font-bold text-sm">Farm Fresh 🌿</p>
+                <h3 className="font-bold text-2xl text-gray-600 mt-1">Groceries<br/>Delivered Fast</h3>
+                <p className="text-gray-800 text-sm mt-1">100% fresh. No compromises.</p>
               </div>
-              <span className="text-7xl">🥬</span>
+              <span className="text-7xl w-30 h-30"><img src="https://png.pngtree.com/png-vector/20240528/ourmid/pngtree-grocery-shopping-bag-full-of-products-png-image_12531115.png" alt="Groceries" /></span>
             </div>
 
             {/* Search */}

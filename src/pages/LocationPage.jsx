@@ -4,7 +4,7 @@ import { useApp } from '../context/AppContext'
 import { cities } from '../data/products'
 
 export default function LocationPage() {
-  const { setUser } = useApp()
+  const { user, setUser } = useApp()
   const navigate = useNavigate()
   const [selected, setSelected] = useState('')
   const [search, setSearch] = useState('')
@@ -18,7 +18,13 @@ export default function LocationPage() {
   function choose(city) {
     setSelected(city)
     setUser(prev => ({ ...(prev || {}), city }))
-    setTimeout(() => navigate('/name'), 300)
+    setTimeout(() => {
+      if (user?.name) {
+        navigate('/shop')
+      } else {
+        navigate('/name')
+      }
+    }, 300)
   }
 
   function detectLocation() {

@@ -15,7 +15,7 @@ import SuccessPage   from './pages/SuccessPage'
 
 function ProtectedRoute({ children }) {
   const { user } = useApp()
-  if (!user?.phone) return <Navigate to="/auth" replace />
+  if (!user?.phone && !user?.email) return <Navigate to="/auth" replace />
   if (!user?.city)  return <Navigate to="/location" replace />
   if (!user?.name)  return <Navigate to="/name" replace />
   return children
